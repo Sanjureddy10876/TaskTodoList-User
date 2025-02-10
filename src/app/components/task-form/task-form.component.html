@@ -1,0 +1,16 @@
+<div class="task-form">
+    <h2>Add New Task</h2>
+    <form (ngSubmit)="addTask()"> 
+      <label>Title</label>
+      <input type="text" [(ngModel)]="newTask.title" name="title" required />
+  
+      <label>Description:</label>
+      <input type="text" [(ngModel)]="newTask.description" name="description" required />
+  
+      <label>Due Date</label>
+      <input type="date" [(ngModel)]="newTask.dueDate" name="dueDate" required />
+  
+      <button type="submit">Add Task</button>
+    </form>
+  </div>
+  

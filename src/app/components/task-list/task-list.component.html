@@ -1,0 +1,24 @@
+<div class="task-list">
+    <h2>Task List</h2>
+    <input type="text" [(ngModel)]="searchList" (input)="searchTasks()" placeholder="Search by title">
+  
+    <ul>
+      <li *ngFor="let task of tasks">
+        <input type="checkbox" [checked]="task.completed" (change)="toggleCompletion(task)" />
+        <strong [ngClass]="{ 'completed-task': task.completed }">{{ task.title }}</strong>
+        - {{ task.description }} (Due: {{ task.dueDate }}) 
+        
+        <button (click)="editTask(task)">Edit</button>
+        <button (click)="task.id ? deleteTask(task.id) : alert('Task ID is missinggg')">Delete</button>      </li>
+    </ul>
+  
+    <div *ngIf="editingTask">
+      <h3>Edit Task</h3>
+      <input type="text" [(ngModel)]="editingTask.title" placeholder="Title" />
+      <input type="text" [(ngModel)]="editingTask.description" placeholder="Description" />
+      <input type="date" [(ngModel)]="editingTask.dueDate" />
+      <button (click)="saveTask()">Save</button> &nbsp; &nbsp;
+      <button (click)="editingTask = null">Cancel</button>
+    </div>
+  </div>
+  
